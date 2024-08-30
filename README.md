@@ -9,5 +9,4 @@ This Python script is designed to analyze US bikeshare data from three major cit
 ### Files used
 The files used in project : **chicago.csv,new_york_city.csv and washington.csv** you can find this files on this wepsite [here](https://motivateco.com/)
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+[UDACITY](https://github.com/udacity/pdsnd_github.git)
