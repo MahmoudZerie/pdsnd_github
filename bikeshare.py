@@ -8,42 +8,30 @@ CITY_DATA = {
     'washington': '/mnt/data/washington.csv'
 }
 
+def get_user_input(prompt, valid_options):
+    """Gets and validates user input."""
+    while True:
+        user_input = input(prompt).strip().lower()
+        if user_input in valid_options:
+            return user_input
+        else:
+            print(f"Invalid input. Please enter one of the following: {', '.join(valid_options)}")
+
 def get_filters():
     """
-    Asks user to specify a city, month, and day to analyze.
-
+    Asks user to specify a city, month, and day to analyze.`
     Returns:
         (str) city - name of the city to analyze
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
-    # get user input for city (chicago, new york city, washington)
-    while True:
-        city = input('Would you like to see data for Chicago, New York City, or Washington? ').strip().lower()
-        if city in CITY_DATA:
-            break
-        else:
-            print("Invalid input. Please enter either Chicago, New York City, or Washington.")
 
-    # get user input for month (all, january, february, ... , june)
-    months = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
-    while True:
-        month = input('Which month? January, February, March, April, May, June, or "all"? ').strip().lower()
-        if month in months:
-            break
-        else:
-            print("Invalid input. Please enter a valid month or 'all'.")
-
-    # get user input for day of week (all, monday, tuesday, ... sunday)
-    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
-    while True:
-        day = input('Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, or "all"? ').strip().lower()
-        if day in days:
-            break
-        else:
-            print("Invalid input. Please enter a valid day of the week or 'all'.")
+    city = get_user_input('Would you like to see data for Chicago, New York City, or Washington? ', CITY_DATA.keys())
+    month = get_user_input('Which month? January, February, March, April, May, June, or "all"? ', 
+                            ['january', 'february', 'march', 'april', 'may', 'june', 'all'])
+    day = get_user_input('Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, or "all"? ', 
+                          ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all'])
 
     print('-'*40)
     return city, month, day
